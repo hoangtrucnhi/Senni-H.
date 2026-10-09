@@ -223,6 +223,68 @@
             .stream-btn { width: 75px; height: 75px; font-size: 0.65rem; }
             .stream-btn i { font-size: 1.6rem; }
         }
+                /* --- CSS CHO NÚT PREVIEW VÀ LISTEN --- */
+        .work-item {
+            flex-direction: column; /* Chuyển thành cột để chứa nút bên dưới */
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .work-actions {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .btn-preview, .btn-listen {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Nút Preview màu tối, viền xám */
+        .btn-preview {
+            background-color: #2a2a2a;
+            color: #fff;
+            border: 1px solid #444;
+        }
+        .btn-preview:hover {
+            background-color: #3a3a3a;
+            border-color: var(--accent-color);
+        }
+
+        /* Nút Listen màu xanh Spotify */
+        .btn-listen {
+            background-color: #1DB954;
+            color: #000;
+        }
+        .btn-listen:hover {
+            background-color: #1ed760;
+            transform: translateY(-2px);
+        }
+
+        /* Khung chứa iframe Preview */
+        .preview-box {
+            width: 100%;
+            margin-top: 10px;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
@@ -350,23 +412,33 @@
             clearInterval(interval);
             document.getElementById("countdown-timer").innerHTML = "<h3>OUT NOW!</h3>";
         }
-    }, 1000);
-</script>
-        <!-- Mục Sản Phẩm / Works -->
+    }, 1000);        <!-- Mục Sản Phẩm / Works -->
         <h2 class="section-title">Latest Works</h2>
         <div class="works-list">
-            <!-- Sản phẩm mới nhất Kyoto Morning với link trực tiếp -->
-            <a href="https://open.spotify.com/track/2lTJSoIrZqdnCp7fWCK0aJ?autoplay_ok=1" target="_blank" class="work-item">
+            
+            <!-- Khung bài hát Kyoto Morning -->
+            <div class="work-item">
                 <div class="work-info">
                     <h3>Kyoto Morning</h3>
-                    <p>Trap Beat • 128 BPM • Single • 2026</p>
+                    <p>Future Bass • 128 BPM • Single • 2026</p>
                 </div>
-                <span class="work-tag">
-                    <i class="fa-solid fa-play"></i> Listen
-                </span>
-            </a>
-            
-            <!-- Bạn có thể thêm các sản phẩm khác ở đây nếu muốn -->
+                <div class="work-actions">
+                    <!-- Nút Preview -->
+                    <button class="btn-preview" onclick="togglePreview('kyoto-preview')">
+                        <i class="fa-solid fa-headphones"></i> Preview
+                    </button>
+                    <!-- Nút Listen (Chuyển qua Spotify) -->
+                    <a href="https://open.spotify.com/track/2lTJSoIrZqdnCp7fWCK0aJ?autoplay_ok=1" target="_blank" class="btn-listen">
+                        <i class="fa-brands fa-spotify"></i> Listen
+                    </a>
+                </div>
+            </div>
+
+            <!-- Khung chứa Spotify Embed (Ẩn mặc định, sẽ xổ xuống khi bấm Preview) -->
+            <div id="kyoto-preview" class="preview-box" style="display: none;">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2lTJSoIrZqdnCp7fWCK0aJ?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+
         </div>
 
         <!-- Mục Link Nghe Nhạc -->
@@ -391,6 +463,16 @@
             </a>
         </div>
     </div>
-
+    <script>
+        // Hàm bật/tắt khung Preview
+        function togglePreview(id) {
+            var x = document.getElementById(id);
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
