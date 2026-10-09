@@ -49,8 +49,8 @@
         .image-wrapper {
             width: 200px;
             height: 200px;
-            border-radius: 50%; /* Bo tròn hoàn hảo */
-            overflow: hidden; /* Cắt bỏ mọi phần thừa ra ngoài hình tròn */
+            border-radius: 50%;
+            overflow: hidden;
             border: 3px solid var(--accent-color);
             box-shadow: 0 0 30px rgba(108, 92, 231, 0.4);
             margin-bottom: 25px;
@@ -64,10 +64,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* Phóng to ảnh 15% để che đi viền răng cưa ở rìa */
-            transform: scale(1.15); 
+            transform: scale(1.15); /* Phóng to để che viền răng cưa */
         }
-        /* ---------------------------------- */
 
         h1 {
             font-size: 2.5rem;
@@ -88,7 +86,7 @@
             margin-bottom: 15px;
         }
 
-        /* --- EMAIL HIỂN THỊ RÕ RÀNG --- */
+        /* --- EMAIL --- */
         .email-display {
             font-size: 1rem;
             color: var(--text-color);
@@ -106,7 +104,7 @@
             color: var(--accent-color);
         }
 
-        /* --- PHẦN SẢN PHẨM (WORKS) --- */
+        /* --- TIÊU ĐỀ CÁC MỤC --- */
         .section-title {
             font-size: 1.2rem;
             font-weight: 600;
@@ -120,6 +118,69 @@
             letter-spacing: 1px;
         }
 
+        /* --- COUNTDOWN --- */
+        .countdown-section {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 25px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid #333;
+        }
+        .countdown-section .section-title {
+            text-align: center;
+            border-bottom: none;
+            margin-bottom: 15px;
+        }
+        .release-info h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+        .release-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        .time-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .time-unit span:first-child {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            line-height: 1;
+        }
+        .time-unit span:last-child {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+        .pre-save-btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .pre-save-btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* --- WORKS / SẢN PHẨM --- */
         .works-list {
             width: 100%;
             display: flex;
@@ -128,19 +189,16 @@
             margin-bottom: 40px;
         }
 
-        /* Cập nhật để cả khung sản phẩm có thể bấm được */
         .work-item {
             background-color: var(--card-bg);
             padding: 15px 20px;
             border-radius: 10px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column; /* Chuyển thành cột để chứa nút bên dưới */
+            align-items: flex-start;
+            gap: 15px;
             transition: all 0.2s ease;
             border-left: 3px solid var(--accent-color);
-            text-decoration: none;
-            color: inherit;
-            cursor: pointer;
         }
 
         .work-item:hover {
@@ -160,19 +218,60 @@
             color: var(--text-muted);
         }
 
-        .work-tag {
-            font-size: 0.75rem;
-            background-color: rgba(108, 92, 231, 0.2);
-            color: var(--accent-color);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-weight: 600;
+        .work-actions {
             display: flex;
-            align-items: center;
-            gap: 5px;
+            gap: 10px;
+            width: 100%;
         }
 
-        /* --- PHẦN LIÊN KẾT STREAMING --- */
+        .btn-preview, .btn-listen {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-preview {
+            background-color: #2a2a2a;
+            color: #fff;
+            border: 1px solid #444;
+        }
+        .btn-preview:hover {
+            background-color: #3a3a3a;
+            border-color: var(--accent-color);
+        }
+
+        .btn-listen {
+            background-color: #1DB954;
+            color: #000;
+        }
+        .btn-listen:hover {
+            background-color: #1ed760;
+            transform: translateY(-2px);
+        }
+
+        .preview-box {
+            width: 100%;
+            margin-top: 10px;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- STREAMING LINKS --- */
         .streaming-links {
             display: flex;
             gap: 20px;
@@ -208,7 +307,6 @@
             border-color: var(--accent-color);
         }
 
-        /* Màu icon chuẩn của các nền tảng */
         .stream-btn.spotify i { color: #1DB954; }
         .stream-btn.apple i { color: #FA243C; }
         .stream-btn.youtube i { color: #FF0000; }
@@ -223,74 +321,12 @@
             .stream-btn { width: 75px; height: 75px; font-size: 0.65rem; }
             .stream-btn i { font-size: 1.6rem; }
         }
-                /* --- CSS CHO NÚT PREVIEW VÀ LISTEN --- */
-        .work-item {
-            flex-direction: column; /* Chuyển thành cột để chứa nút bên dưới */
-            align-items: flex-start;
-            gap: 15px;
-        }
-
-        .work-actions {
-            display: flex;
-            gap: 10px;
-            width: 100%;
-        }
-
-        .btn-preview, .btn-listen {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: none;
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Nút Preview màu tối, viền xám */
-        .btn-preview {
-            background-color: #2a2a2a;
-            color: #fff;
-            border: 1px solid #444;
-        }
-        .btn-preview:hover {
-            background-color: #3a3a3a;
-            border-color: var(--accent-color);
-        }
-
-        /* Nút Listen màu xanh Spotify */
-        .btn-listen {
-            background-color: #1DB954;
-            color: #000;
-        }
-        .btn-listen:hover {
-            background-color: #1ed760;
-            transform: translateY(-2px);
-        }
-
-        /* Khung chứa iframe Preview */
-        .preview-box {
-            width: 100%;
-            margin-top: 10px;
-            animation: slideDown 0.3s ease-out;
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
     </style>
 </head>
 <body>
 
     <div class="artist-container">
-        <!-- Avatar (Đã fix lỗi răng cưa) -->
+        <!-- Avatar -->
         <div class="image-wrapper">
             <img src="https://raw.githubusercontent.com/hoangtrucnhi/Senni-H./refs/heads/main/Senni-H.png" alt="Senni. H Portrait">
         </div>
@@ -299,120 +335,29 @@
         <h1>Senni. H</h1>
         <div class="roles">Producer • Beat Maker • Songwriter</div>
         
-        <!-- Email hiển thị rõ ràng -->
+        <!-- Email -->
         <div class="email-display">
             <i class="fa-solid fa-envelope"></i>
             hoangtrucnhi1607@gmail.com
         </div>
-<!-- Bắt đầu phần Countdown -->
-<div class="countdown-section">
-    <h2 class="section-title">Upcoming Release</h2>
-    <div class="release-info">
-        <h3>Neon Shibuya</h3>
-        <p>Single • 2026</p>
-    </div>
-    <div id="countdown-timer" class="countdown-timer">
-        <!-- JavaScript sẽ tự động điền thời gian vào đây -->
-        <div class="time-unit"><span id="days">00</span><span>Days</span></div>
-        <div class="time-unit"><span id="hours">00</span><span>Hours</span></div>
-        <div class="time-unit"><span id="minutes">00</span><span>Mins</span></div>
-        <div class="time-unit"><span id="seconds">00</span><span>Secs</span></div>
-    </div>
-    <a href="https://open.spotify.com/artist/7h2ZhULQ8glRwTUgsr1MOx" target="_blank" class="pre-save-btn">Pre-save on Spotify</a>
-</div>
-<!-- Kết thúc phần Countdown -->
 
-<style>
-    /* Thêm CSS cho Countdown */
-    .countdown-section {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 40px;
-        padding: 25px;
-        background-color: var(--card-bg);
-        border-radius: 12px;
-        border: 1px solid #333;
-    }
-    .countdown-section .section-title {
-        text-align: center;
-        border-bottom: none;
-        margin-bottom: 15px;
-    }
-    .release-info h3 {
-        font-size: 1.5rem;
-        font-weight: 800;
-        margin-bottom: 5px;
-    }
-    .release-info p {
-        color: var(--text-muted);
-        font-size: 0.9rem;
-        margin-bottom: 20px;
-    }
-    .countdown-timer {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin-bottom: 25px;
-    }
-    .time-unit {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .time-unit span:first-child {
-        font-size: 2.2rem;
-        font-weight: 800;
-        color: var(--accent-color);
-        line-height: 1;
-    }
-    .time-unit span:last-child {
-        font-size: 0.8rem;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        margin-top: 5px;
-    }
-    .pre-save-btn {
-        display: inline-block;
-        background-color: var(--accent-color);
-        color: #fff;
-        padding: 12px 30px;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: background-color 0.3s ease;
-    }
-    .pre-save-btn:hover {
-        background-color: var(--accent-hover);
-    }
-</style>
+        <!-- Phần Countdown -->
+        <div class="countdown-section">
+            <h2 class="section-title">Upcoming Release</h2>
+            <div class="release-info">
+                <h3>Neon Shibuya</h3>
+                <p>Single • 2026</p>
+            </div>
+            <div id="countdown-timer" class="countdown-timer">
+                <div class="time-unit"><span id="days">00</span><span>Days</span></div>
+                <div class="time-unit"><span id="hours">00</span><span>Hours</span></div>
+                <div class="time-unit"><span id="minutes">00</span><span>Mins</span></div>
+                <div class="time-unit"><span id="seconds">00</span><span>Secs</span></div>
+            </div>
+            <a href="https://open.spotify.com/artist/7h2ZhULQ8glRwTUgsr1MOx" target="_blank" class="pre-save-btn">Pre-save on Spotify</a>
+        </div>
 
-<script>
-    // Đặt ngày phát hành mục tiêu (15/10/2026, 8:00 AM GMT+7)
-    const countdownDate = new Date("Oct 15, 2026 08:00:00 GMT+0700").getTime();
-
-    // Cập nhật đồng hồ mỗi giây
-    const interval = setInterval(function() {
-        const now = new Date().getTime();
-        const distance = countdownDate - now;
-
-        // Tính toán ngày, giờ, phút, giây
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Hiển thị kết quả
-        document.getElementById("days").innerText = days < 10 ? "0" + days : days;
-        document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
-        document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
-        document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
-
-        // Nếu thời gian đếm ngược kết thúc, hiển thị thông báo
-        if (distance < 0) {
-            clearInterval(interval);
-            document.getElementById("countdown-timer").innerHTML = "<h3>OUT NOW!</h3>";
-        }
-    }, 1000);        <!-- Mục Sản Phẩm / Works -->
+        <!-- Mục Sản Phẩm / Works -->
         <h2 class="section-title">Latest Works</h2>
         <div class="works-list">
             
@@ -423,18 +368,16 @@
                     <p>Future Bass • 128 BPM • Single • 2026</p>
                 </div>
                 <div class="work-actions">
-                    <!-- Nút Preview -->
                     <button class="btn-preview" onclick="togglePreview('kyoto-preview')">
                         <i class="fa-solid fa-headphones"></i> Preview
                     </button>
-                    <!-- Nút Listen (Chuyển qua Spotify) -->
                     <a href="https://open.spotify.com/track/2lTJSoIrZqdnCp7fWCK0aJ?autoplay_ok=1" target="_blank" class="btn-listen">
                         <i class="fa-brands fa-spotify"></i> Listen
                     </a>
                 </div>
             </div>
 
-            <!-- Khung chứa Spotify Embed (Ẩn mặc định, sẽ xổ xuống khi bấm Preview) -->
+            <!-- Khung chứa Spotify Embed (Ẩn mặc định) -->
             <div id="kyoto-preview" class="preview-box" style="display: none;">
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2lTJSoIrZqdnCp7fWCK0aJ?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
@@ -444,30 +387,50 @@
         <!-- Mục Link Nghe Nhạc -->
         <h2 class="section-title">Listen On</h2>
         <div class="streaming-links">
-            <!-- Link Spotify Artist chính thức của bạn -->
             <a href="https://open.spotify.com/artist/7h2ZhULQ8glRwTUgsr1MOx" class="stream-btn spotify" target="_blank">
                 <i class="fa-brands fa-spotify"></i>
                 Spotify
             </a>
-            
-            <!-- Link Apple Music (Bạn hãy cập nhật link thật vào đây) -->
             <a href="#" class="stream-btn apple" target="_blank">
                 <i class="fa-brands fa-apple"></i>
                 Apple Music
             </a>
-            
-            <!-- Link YouTube Music (Bạn hãy cập nhật link thật vào đây) -->
             <a href="#" class="stream-btn youtube" target="_blank">
                 <i class="fa-brands fa-youtube"></i>
                 YT Music
             </a>
         </div>
     </div>
+
+    <!-- TOÀN BỘ JAVASCRIPT ĐƯỢC ĐƯA XUỐNG ĐÂY -->
     <script>
-        // Hàm bật/tắt khung Preview
+        // 1. Hàm đếm ngược thời gian
+        const countdownDate = new Date("Oct 15, 2026 08:00:00 GMT+0700").getTime();
+
+        const interval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(interval);
+                document.getElementById("countdown-timer").innerHTML = "<h3>OUT NOW!</h3>";
+            }
+        }, 1000);
+
+        // 2. Hàm bật/tắt khung Preview
         function togglePreview(id) {
             var x = document.getElementById(id);
-            if (x.style.display === "none") {
+            if (x.style.display === "none" || x.style.display === "") {
                 x.style.display = "block";
             } else {
                 x.style.display = "none";
