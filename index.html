@@ -242,7 +242,116 @@
             <i class="fa-solid fa-envelope"></i>
             hoangtrucnhi1607@gmail.com
         </div>
+<!-- Bắt đầu phần Countdown -->
+<div class="countdown-section">
+    <h2 class="section-title">Upcoming Release</h2>
+    <div class="release-info">
+        <h3>Neon Shibuya</h3>
+        <p>Single • 2026</p>
+    </div>
+    <div id="countdown-timer" class="countdown-timer">
+        <!-- JavaScript sẽ tự động điền thời gian vào đây -->
+        <div class="time-unit"><span id="days">00</span><span>Days</span></div>
+        <div class="time-unit"><span id="hours">00</span><span>Hours</span></div>
+        <div class="time-unit"><span id="minutes">00</span><span>Mins</span></div>
+        <div class="time-unit"><span id="seconds">00</span><span>Secs</span></div>
+    </div>
+    <a href="https://open.spotify.com/track/..." target="_blank" class="pre-save-btn">Pre-save on Spotify</a>
+</div>
+<!-- Kết thúc phần Countdown -->
 
+<style>
+    /* Thêm CSS cho Countdown */
+    .countdown-section {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 25px;
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        border: 1px solid #333;
+    }
+    .countdown-section .section-title {
+        text-align: center;
+        border-bottom: none;
+        margin-bottom: 15px;
+    }
+    .release-info h3 {
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-bottom: 5px;
+    }
+    .release-info p {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+    .countdown-timer {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 25px;
+    }
+    .time-unit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .time-unit span:first-child {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: var(--accent-color);
+        line-height: 1;
+    }
+    .time-unit span:last-child {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        margin-top: 5px;
+    }
+    .pre-save-btn {
+        display: inline-block;
+        background-color: var(--accent-color);
+        color: #fff;
+        padding: 12px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+    }
+    .pre-save-btn:hover {
+        background-color: var(--accent-hover);
+    }
+</style>
+
+<script>
+    // Đặt ngày phát hành mục tiêu (15/10/2026, 8:00 AM GMT+7)
+    const countdownDate = new Date("Oct 15, 2026 08:00:00 GMT+0700").getTime();
+
+    // Cập nhật đồng hồ mỗi giây
+    const interval = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        // Tính toán ngày, giờ, phút, giây
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Hiển thị kết quả
+        document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+        document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+        document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+        document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+        // Nếu thời gian đếm ngược kết thúc, hiển thị thông báo
+        if (distance < 0) {
+            clearInterval(interval);
+            document.getElementById("countdown-timer").innerHTML = "<h3>OUT NOW!</h3>";
+        }
+    }, 1000);
+</script>
         <!-- Mục Sản Phẩm / Works -->
         <h2 class="section-title">Latest Works</h2>
         <div class="works-list">
