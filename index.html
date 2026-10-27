@@ -341,11 +341,11 @@
             hoangtrucnhi1607@gmail.com
         </div>
 
-        <!-- Phần Countdown -->
+        <!-- Phần Countdown (Đã cập nhật Bamboo Forest) -->
         <div class="countdown-section">
             <h2 class="section-title">Upcoming Release</h2>
             <div class="release-info">
-                <h3>Neon Shibuya</h3>
+                <h3>Bamboo Forest</h3>
                 <p>Single • 2026</p>
             </div>
             <div id="countdown-timer" class="countdown-timer">
@@ -361,6 +361,27 @@
         <h2 class="section-title">Latest Works</h2>
         <div class="works-list">
             
+            <!-- Khung bài hát Neon Shibuya (Mới ra mắt) -->
+            <div class="work-item">
+                <div class="work-info">
+                    <h3>Neon Shibuya</h3>
+                    <p>Future Bass • City Pop • Single • 2026</p>
+                </div>
+                <div class="work-actions">
+                    <button class="btn-preview" onclick="togglePreview('neon-preview')">
+                        <i class="fa-solid fa-headphones"></i> Preview
+                    </button>
+                    <a href="https://open.spotify.com/track/7mbgePlLeg2Diz7TPsM2Hv?si=dfa1954a23034d81" target="_blank" class="btn-listen">
+                        <i class="fa-brands fa-spotify"></i> Listen
+                    </a>
+                </div>
+            </div>
+
+            <!-- Khung chứa Spotify Embed cho Neon Shibuya (Ẩn mặc định) -->
+            <div id="neon-preview" class="preview-box" style="display: none;">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7mbgePlLeg2Diz7TPsM2Hv?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+
             <!-- Khung bài hát Kyoto Morning -->
             <div class="work-item">
                 <div class="work-info">
@@ -377,7 +398,7 @@
                 </div>
             </div>
 
-            <!-- Khung chứa Spotify Embed (Ẩn mặc định) -->
+            <!-- Khung chứa Spotify Embed cho Kyoto Morning (Ẩn mặc định) -->
             <div id="kyoto-preview" class="preview-box" style="display: none;">
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2lTJSoIrZqdnCp7fWCK0aJ?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
@@ -404,8 +425,8 @@
 
     <!-- TOÀN BỘ JAVASCRIPT ĐƯỢC ĐƯA XUỐNG ĐÂY -->
     <script>
-        // 1. Hàm đếm ngược thời gian
-        const countdownDate = new Date("Oct 15, 2026 08:00:00 GMT+0700").getTime();
+        // 1. Hàm đếm ngược thời gian (Đã cập nhật ngày 15/11/2026)
+        const countdownDate = new Date("Nov 15, 2026 08:00:00 GMT+0700").getTime();
 
         const interval = setInterval(function() {
             const now = new Date().getTime();
@@ -427,7 +448,7 @@
             }
         }, 1000);
 
-        // 2. Hàm bật/tắt khung Preview
+        // 2. Hàm bật/tắt khung Preview (Dùng chung cho cả 2 bài hát)
         function togglePreview(id) {
             var x = document.getElementById(id);
             if (x.style.display === "none" || x.style.display === "") {
